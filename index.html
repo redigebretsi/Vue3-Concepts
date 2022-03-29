@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="shopping-list"><h1>{{header}}</h1>
-        <input v-model="header">
-    </div>
     <script src="https://unpkg.com/vue@3"></script>
+    <div id="shopping-list" class="root"><h1>{{header.toUpperCase()}}</h1>
+        <input v-model="header">
+        <h1>Shopping list</h1>
+        <ul>
+            <!//distructure the items before use>
+            <li v-for="{id,label} in items" :key="id">{{label}}</li>
+        </ul>
+    </div>
     <script>
         Vue.createApp({
             data(){
                 return {
-                    header: "Vue is parting"
+                    header: "Vue is parting",
+                    items:[
+                    {id: 1, label:"Party hats"},
+                    {id: 2, label:"Bored games"}
+                    ]
                 }
                 }
         }).mount('#shopping-list')
